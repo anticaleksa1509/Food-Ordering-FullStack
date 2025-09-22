@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f8f9fa;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      padding: 12px;
+      text-align: center; /* Poravnanje u centru */
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+    .icon-true {
+      color: green;
+      font-weight: bold;
+    }
+    .icon-false {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Can Create</th>
+    <th>Can Read</th>
+    <th>Can Update</th>
+    <th>Can Delete</th>
+    <th>Can Create Order</th>
+    <th>Can Search Order</th>
+    <th>Can Track Order</th>
+    <th>Can Cancel Order</th>
+    <th>Can Schedule Order</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.lastName }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <span *ngIf="user.can_create" class="icon-true">✔</span>
+      <span *ngIf="!user.can_create" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_read" class="icon-true">✔</span>
+      <span *ngIf="!user.can_read" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_update" class="icon-true">✔</span>
+      <span *ngIf="!user.can_update" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_delete" class="icon-true">✔</span>
+      <span *ngIf="!user.can_delete" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_create_order" class="icon-true">✔</span>
+      <span *ngIf="!user.can_create_order" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_search_order" class="icon-true">✔</span>
+      <span *ngIf="!user.can_search_order" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_track_order" class="icon-true">✔</span>
+      <span *ngIf="!user.can_track_order" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_cancel_order" class="icon-true">✔</span>
+      <span *ngIf="!user.can_cancel_order" class="icon-false">✖</span>
+    </td>
+    <td>
+      <span *ngIf="user.can_schedule_order" class="icon-true">✔</span>
+      <span *ngIf="!user.can_schedule_order" class="icon-false">✖</span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

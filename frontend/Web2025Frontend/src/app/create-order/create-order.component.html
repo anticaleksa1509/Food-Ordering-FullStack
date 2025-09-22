@@ -1,0 +1,110 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h3>Chose Your Meals</h3>
+        </div>
+        <div class="card-body">
+          <!-- Sokovi -->
+          <div>
+            <h4 class="text-secondary border-bottom pb-2">Drinks</h4>
+            <div class="row">
+              <div class="col-md-6 mb-2" *ngFor="let drink of drinks">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [value]="drink"
+                    id="{{ drink }}"
+                    (change)="onDishSelected($event)"
+                  />
+                  <label class="form-check-label" for="{{ drink }}">
+                    {{ drink }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pice -->
+          <div class="mt-4">
+            <h4 class="text-secondary border-bottom pb-2">Pizza</h4>
+            <div class="row">
+              <div class="col-md-6 mb-2" *ngFor="let pizza of pizzas">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [value]="pizza"
+                    id="{{ pizza }}"
+                    (change)="onDishSelected($event)"
+                  />
+                  <label class="form-check-label" for="{{ pizza }}">
+                    {{ pizza }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Burgeri -->
+          <div class="mt-4">
+            <h4 class="text-secondary border-bottom pb-2">Burgers</h4>
+            <div class="row">
+              <div class="col-md-6 mb-2" *ngFor="let burger of burgers">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [value]="burger"
+                    id="{{ burger }}"
+                    (change)="onDishSelected($event)"
+                  />
+                  <label class="form-check-label" for="{{ burger }}">
+                    {{ burger }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slatkiši -->
+          <div class="mt-4">
+            <h4 class="text-secondary border-bottom pb-2">Desserts</h4>
+            <div class="row">
+              <div class="col-md-6 mb-2" *ngFor="let dessert of desserts">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    [value]="dessert"
+                    id="{{ dessert }}"
+                    (change)="onDishSelected($event)"
+                  />
+                  <label class="form-check-label" for="{{ dessert }}">
+                    {{ dessert }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="message" class="alert" [ngClass]="{'alert-success': message.type === 'success', 'alert-danger': message.type === 'error'}">
+          {{ message.text }}
+        </div>
+
+        <div class="card-footer text-center">
+          <button
+            class="btn btn-success btn-lg"
+            (click)="submitOrder()"
+            [disabled]="selectedDishes.length === 0"
+          >
+            Complete Your Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

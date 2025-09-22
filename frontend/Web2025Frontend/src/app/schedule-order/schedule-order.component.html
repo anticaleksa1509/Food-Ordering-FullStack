@@ -1,0 +1,11 @@
+<form [formGroup]="scheduleForm" (ngSubmit)="scheduleOrder()">
+  <label for="localDateTime">Schedule Time:</label>
+  <input id="localDateTime" formControlName="localDateTime" type="datetime-local" required>
+
+  <label for="dishes">Dishes (comma separated):</label>
+  <input id="dishes" formControlName="dishes" type="text" required>
+
+  <button type="submit" [disabled]="scheduleForm.invalid">Schedule Order</button>
+</form>
+
+<p *ngIf="scheduleForm.invalid" style="color: red;">Please fill in all fields correctly.</p>

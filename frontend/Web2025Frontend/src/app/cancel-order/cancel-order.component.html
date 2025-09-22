@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Cancel Your Orders</h2>
+
+  <!-- Prikazuje poruku o uspehu ili grešci -->
+  <div *ngIf="message" class="alert mt-3"
+       [ngClass]="{'alert-success': message.type === 'success', 'alert-danger': message.type === 'error'}">
+    {{ message.text }}
+  </div>
+
+  <!-- Tabela sa porudžbinama -->
+  <table class="table table-striped mt-4" *ngIf="orders.length > 0">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.id }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+        <button *ngIf="order.status === 'ORDERED'" class="btn btn-danger btn-sm"
+                (click)="cancelOrder(order.id)">
+          Cancel Order
+        </button>
+        <span *ngIf="order.status !== 'ORDERED'" class="text-muted">Cannot cancel</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Ako nema porudžbina -->
+  <div *ngIf="orders.length === 0" class="text-center mt-3">
+    <p>No orders found.</p>
+  </div>
+</div>

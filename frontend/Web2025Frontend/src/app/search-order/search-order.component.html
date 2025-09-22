@@ -1,0 +1,72 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Search Your Orders</h2>
+
+  <button (click)="onSearch()" class="btn btn-primary btn-lg btn-block">Search Orders</button>
+
+  <div *ngIf="message" class="alert mt-3"
+       [ngClass]="{'alert-success': message.type === 'success', 'alert-danger': message.type === 'error'}">
+    {{ message.text }}
+  </div>
+
+  <div *ngIf="showOrders">
+
+    <!-- Loading spinner -->
+    <div *ngIf="isLoading" class="text-center mt-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Ako je admin, prikazuje sve porudžbine -->
+    <div *ngIf="!isLoading && isAdmin && ordersAll.length > 0">
+      <h3 class="mt-4">All Orders (Admin View)</h3>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of ordersAll">
+          <td>{{ order.id }}</td>
+          <td>{{ order.localDateTime }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.active ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Ako je običan korisnik, prikazuje samo njegove porudžbine -->
+    <div *ngIf="!isLoading && !isAdmin && ordersUser.length > 0">
+      <h3 class="mt-4">Your Orders (User View)</h3>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+
+          <th>Date</th>
+          <th>Status</th>
+          <th>Active</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of ordersUser">
+
+          <td>{{ order.localDateTime }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.active ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Ako nema porudžbina, ali nije loading -->
+    <div *ngIf="!isLoading && ordersAll.length === 0 && ordersUser.length === 0">
+      <p class="text-center mt-3">No orders found.</p>
+    </div>
+
+  </div>
+</div>

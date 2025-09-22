@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Lista grešaka</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID Korisnika</th>
+            <th>Poruka</th>
+            <th>Vreme</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let error of errorMessages">
+            <td>{{ error.userId }}</td>
+            <td>{{ error.message }}</td>
+            <td>{{ error.timestamp | date: 'dd.MM.yyyy HH:mm' }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
