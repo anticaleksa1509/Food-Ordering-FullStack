@@ -40,4 +40,4 @@ Backend: Spring Boot (Java) with JPA/Hibernate.
 
 Frontend: Angular for user interaction.
 
-Database: PostgreSQL with foreign key dependencies between orders and order_items.
+Database: MySQL with foreign key dependencies between orders and order_items.
