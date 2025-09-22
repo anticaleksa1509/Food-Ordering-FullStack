@@ -1,4 +1,4 @@
-The Food Ordering System enables customers and administrators to manage food delivery orders through a microservice architecture.
+The Food Ordering System enables customers and administrators to manage food delivery orders.
 
 Core features:
 
